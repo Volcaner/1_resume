@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Resume</title>
+	<style type="text/css">
+		*{
+			/*position: */
+			width: 100%;
+			height: 100%;
+			
+			/*style*/
+			margin: 0 0;
+			padding: 0 0;
+		}
+		.app{
+			/*position*/
+			position: absolute;
+			width: 100%;
+			height: 100%;
+
+			/*style*/
+			overflow: hidden;
+			background: url(./js/bin/volcano.jpg);
+			/*background-size: 1280px 720px;*/
+			background-repeat: no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" class="app"></div>
+</body>
+<script type="text/javascript" src="js/bin/jquery.js"></script>
+<!-- <script type="text/javascript" src="js/bin/bin.js"></script> -->
+<script type="text/javascript" src="./js/resumeApp/introduce.js"></script>;
+<script type="text/javascript" src="./js/control/mousecoords/mousecoords.js"></script>;
+<script type="text/javascript" src="./js/control/windowInf/windowInf.js"></script>;
+<script type="text/javascript" src="./js/resumeApp/home/home.js"></script>
+<script type="text/javascript" src="./js/resumeApp/home/js/home_process.js"></script>;
+<script type="text/javascript" src="./js/resumeApp/home/js/home_achieve.js"></script>;
+<script type="text/javascript" src="./js/control/dropDownEffect/js/dropdowneffect.js"></script>;
+<script type="text/javascript" src="./js/control/getBrowser/js/getbrowser.js"></script>;
+
+<link rel="stylesheet" type="text/css" href="./js/resumeApp/home/css/cls.css">
+<script type="text/javascript">
+	$(document).ready(function(){
+		// 背景图片
+		var w = "100%";
+		var h = "100%";
+		$(".app").css("background-size", w + " " + h);
+
+		// home
+		var Home = new $.Home();
+		var obj = {
+			parentId: "app"
+		};
+		Home.init(obj);
+	});
+</script>
+
+
+<!-- // TEST
+<script type="text/javascript">
+	$(document).ready(function(){
+		var Introduce = new $.Introduce();
+		Introduce.init();
+	});
+</script>
+-->
+</html>

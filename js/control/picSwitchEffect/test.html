@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Resume</title>
+	<style type="text/css">
+		*{
+			/*position: */
+			width: 100%;
+			height: 100%;
+			
+			/*style*/
+			margin: 0 0;
+			padding: 0 0;
+		}
+		.app{
+
+			/*position: */
+			position: relative;
+			width: 400px;
+			height:300px;
+			
+			/*style*/
+			display: block;
+			/*margin: 0px auto;*/
+			padding: 0 0;
+			background: #333;
+			overflow: hidden;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="app" class="app"></div>
+	<div style="width: 200px; height: 100px; background: red; position: relative; float: left; overflow: hidden;">
+		<div style="width: 100px; height: 200px; background: blue; position: relative; float: left;"></div>
+	</div>
+</body>
+<script type="text/javascript" src="./../../../js/bin/jquery.js"></script>
+<script type="text/javascript" src="./js/picswitcheffect.js"></script>;
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var PicSwitchEffect = new $.PicSwitchEffect();
+		var obj = {
+			items: [
+				{	
+					id: "ipcrystal",
+					img: "./img/ipcrystal0.png",
+					itemName: "IPCrystal",
+					info: "华为",
+					link: '\
+						<h3>IPCrystal</h3>\
+						<p>将全球各地路由、站点等设备数据导入该系统，通过仿真在页面上展示设备、线路及负载等相关信息，来预测未来。</p>\
+					'
+				},
+				{
+					id: "jingning",
+					img: "./img/jingning0.png",	
+					itemName: "静宁精准扶贫系统",
+					info: "静宁扶贫办",
+					link: '\
+						<h3>静宁精准扶贫系统</h3>\
+						<p>帮助甘肃省静宁县制作全县扶贫网站，包括网站所有页面设计，以及录入和分类贫困户信息等。</p>\
+					'
+				},
+				{
+					id: "pengyang",
+					img: "./img/pengyang0.png",
+					itemName: "彭阳精准扶贫系统",
+					info: "彭阳扶贫办",
+					link: '\
+						<h3>彭阳精准扶贫系统</h3>\
+						<p>运用html+css、JS、ps、Sublimetext、excel等；网页中添加js等动态效果；输入数据量较大。</p>\
+					'
+				}
+			]
+		};
+		PicSwitchEffect.init("app", obj.items);
+	});
+</script>
+</html>

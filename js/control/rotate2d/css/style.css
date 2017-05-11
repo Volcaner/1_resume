@@ -1,0 +1,22 @@
+/*-----------trans3DBoxes1_cls-------------*/
+.trans3DBoxes1_cls{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: auto;
+
+	/*style*/
+	display: inline-block;
+}
+.trans3DBoxes1_cls div{
+	/*position*/
+	position: absolute;
+	width: 100px;
+	height: 100px;
+
+	/*style*/
+	background: url(./../img/girl.jpg);
+	margin: 0 auto 0 auto;
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+}
