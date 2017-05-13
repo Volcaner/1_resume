@@ -2,50 +2,89 @@
 	$.PicSwitchEffect = function(){
         var self = this;
 
-        // init itemNo
-        var itemNo = 0;
+        // init curItemNo
+        var curItemNo = 0;
 
         // timer
         var turnLeftTimer;
         var turnRightTimer;
 
+        // 点击事件的防抖动
+        var bIsClick = true;
+
         this.init = function(strTargetId, obj){
             var strHtml = '\
                 <div id="switchBox" class="switchBox_cls">\
-                    <div id="turnBtn" class="turnBtn_cls">\
-                        <div id="btnLeft" class="btnLeft_cls btn_cls"><p>&#139</p></div>\
-                        <div id="btnRight" class="btnRight_cls btn_cls"><p>&#155</p></div>\
+                    <div id="switchBtn" class="switchBtn_cls">\
+                        <div id="switchBtnLeft" class="switchBtnLeft_cls defaultBtn_cls"><a>&lt</a></div>\
+                        <div id="switchBtnRight" class="switchBtnRight_cls defaultBtn_cls"><a>&gt</a></div>\
                     </div>\
-                    <div id="itemBox" class="itemBox_cls"></div>\
+                    <div id="switchItemBox" class="switchItemBox_cls"></div>\
                     <div id="orderBox" class="orderBox_cls"></div>\
                 </div>\
             ';
 
             $("#" + strTargetId).append(strHtml);
-            $("#itemBox").css("width", obj.length + "00%");
-            var itemH = $("#" + strTargetId).width();
 
+            var orderNum = 1;
+            var switchBoxW = $("#switchBox").width();
+            $("#orderBox").append('\
+                <div id=' + "orderBox_" + orderNum + '>\
+                    <div id=' + "orderBox_" + orderNum + "_Interlayer" + ' class="orderBox_interLayer_cls"></div>\
+                </div>\
+            ');
+            $("#orderBox_" + orderNum).css({"width":switchBoxW + "px"});
+            $("#orderBox_" + orderNum).addClass("orderBox_num_cls");
             obj.forEach(function(item, index){
-                console.log(item, index);
-
-                $("#itemBox").append('\
-                    <div id=' + item.id + ' class="item_cls"></div>\
+                //item
+                $("#switchItemBox").append('\
+                    <div id=' + item.id + ' class="switchItem_cls"></div>\
                 ');
                 $("#" + item.id).css("width", 100/obj.length + "%");
                 self.addContent(item, index);
 
-                $("#orderBox").append('\
+                // order
+                var orderW = $("#orderBox").width();
+                var interLayerW = $("#orderBox_" + orderNum + "_Interlayer").width();
+                var orderMarginL = parseInt($(".itemOrder_cls").css("marginLeft"));
+                var childrenLength = 62*Math.floor((index+1)/orderNum);
+                if(childrenLength > interLayerW){
+                    $("#orderBox").css("width", "calc(100% + " + orderW + "px)");
+                    orderNum++;
+                    $("#orderBox").append('\
+                        <div id=' + "orderBox_" + orderNum + '>\
+                            <div id=' + "orderBox_" + orderNum + "_Interlayer" + ' class="orderBox_interLayer_cls"></div>\
+                        </div>\
+                    ');
+                    $("#orderBox_" + orderNum).css({"width":switchBoxW + "px"});
+                    $("#orderBox_" + orderNum).addClass("orderBox_num_cls");
+                }
+
+                // append order children
+                $("#orderBox_" + orderNum + "_Interlayer").append('\
                     <div id=' + item.id + "Order" + ' class="itemOrder_cls"><img src=' + item.img + ' /></div>\
                 ');
 
                 // order click
                 $("#" + item.id + "Order").click(function(){
-                    console.log(itemNo );
+                    if(bIsClick){
+                        bIsClick = false;
+                        setTimeout(function(){
+                            bIsClick = true;
+                        }, 800);
+
+                        // turn after click order
+                        self.turnByOrder(obj, index);
+                    }
                 });
             });
 
+            // init status
+            $("#switchItemBox").css("width", obj.length + "00%");
+            $("#" + obj[curItemNo].id + "Order").addClass("OrderBeCheck_cls");
+
             // turn left right
-            self.turnByOrder(obj);
+            self.turnByBtn(obj);
         };
 
         this.addContent = function(item, index){
@@ -58,64 +97,125 @@
                         <h3>' + item.info + '</h3>\
                     </div>\
                 </div>\
-                <div id="itemInfo" class="itemInfo_cls">' + item.link + '</div>\
+                <div id="itemInfo" class="switchItemInfo_cls">' + item.link + '</div>\
             </div>';
 
              $("#" + item.id).append(strHtml);
         };
 
-        this.turnByOrder = function(obj){
-            var targetW = Math.floor($("#itemBox").width()/obj.length);
-
+        this.turnByBtn = function(obj){
+            var targetW = Math.floor($("#switchItemBox").width()/obj.length);
+            
             // turn left
-            $("#btnLeft").click(function(){
-                var targetL = $("#itemBox").position().left;
-                var speed = 0;
+            $("#switchBtnRight").click(function(){
+                if(bIsClick){
+                    bIsClick = false;
+                    setTimeout(function(){
+                        bIsClick = true;
+                    }, 500);
 
-                if(Math.abs(targetL)+1 < targetW*(obj.length-1)){
-                    turnLeftTimer = setInterval(function(){
-                        speed-=10;
-                        $("#itemBox").css("left", targetL + speed + "px");
-
-                        if(speed <= -targetW){
-                            $("#itemBox").css("left", targetL - targetW + "px");
-                            clearInterval(turnLeftTimer);
-                            itemNo++;
-                            console.log("stop turn left ");
-                        }
-                    }, 10);
-                    console.log("xixixi");
+                    var count = 1;
+                    self.turnRight(obj, targetW, count);
                 }
-                else{
-                    console.log("dadada");
-                }
-               
             });
 
             // turn right
-            $("#btnRight").click(function(){
-                var targetL = $("#itemBox").position().left;
-                var speed = 0;
+            $("#switchBtnLeft").click(function(){
+                if(bIsClick){
+                    bIsClick = false;
+                    setTimeout(function(){
+                        bIsClick = true;
+                    }, 500);
 
-                if(targetL+1 < 0){
-                    turnRightTimer = setInterval(function(){
-                        speed+=10;
-                        console.log(targetL)
-                        $("#itemBox").css("left", targetL + speed + "px");
-
-                        if(speed >= targetW){
-                            $("#itemBox").css("left", targetL + targetW + "px");
-                            clearInterval(turnRightTimer);
-                            itemNo--;
-                            console.log("stop turn right ");
-                        }
-                    }, 10);
+                    var count = 1;
+                    self.turnLeft(obj, targetW, count);
                 }
-                else{
-                    console.log("dadada");
-                }
-                
+               
             });
+        };
+
+        this.turnByOrder = function(obj, index){
+            var targetW = Math.floor($("#switchItemBox").width()/obj.length);
+            // var targetL = $("#switchItemBox").position().left;
+            var count = Math.abs(index-curItemNo);
+
+            if(index > curItemNo){ // turn right
+                self.turnRight(obj, targetW, count);
+            }
+            else if(index < curItemNo){ // turn left
+                self.turnLeft(obj, targetW, count);
+            }
+            else{
+                // do nothing
+            }
+        };
+
+        this.turnLeft = function(obj, targetW, count){
+            var targetL = $("#switchItemBox").position().left;
+            var speed = 0;
+
+            if(targetL+1 < 0){
+                $("#" + obj[curItemNo].id + "Order").removeClass("OrderBeCheck_cls");
+                turnLeftTimer = setInterval(function(){
+                    speed+=(10*count);
+                    $("#switchItemBox").css("left", targetL + speed + "px");
+
+                    if(speed >= targetW*count){
+                        $("#switchItemBox").css("left", targetL + targetW*count + "px");
+                        clearInterval(turnLeftTimer);
+                        curItemNo-=count;
+                        $("#" + obj[curItemNo].id + "Order").addClass("OrderBeCheck_cls");
+                        console.log("stop turn right ");
+                    }
+                }, 10);
+            }
+            else{
+                console.log("dadada");
+            }
+        };
+
+        this.turnRight = function(obj, targetW, count){
+            var targetL = $("#switchItemBox").position().left;
+            var speed = 0;
+
+            if(Math.abs(targetL)+1 < targetW*(obj.length-1)){
+                $("#" + obj[curItemNo].id + "Order").removeClass("OrderBeCheck_cls");
+                turnRightTimer = setInterval(function(){
+                    speed-=(10*count);
+                    $("#switchItemBox").css("left", targetL + speed + "px");
+
+                    if(Math.abs(speed) >= count*targetW){
+                        $("#switchItemBox").css("left", targetL - targetW*count + "px");
+                        clearInterval(turnRightTimer);
+                        curItemNo+=count;
+                        $("#" + obj[curItemNo].id + "Order").addClass("OrderBeCheck_cls");
+                        console.log("stop turn right ");
+                    }
+                }, 10);
+                console.log("xixixi");
+            }
+            else{
+                console.log("dadada");
+            }
+        } ;
+
+        // 科学防抖，你值得拥有
+        this.debounce = function(func, wait, immediate){  
+            var timeout;  
+            return function(){  
+                var context = this,  
+                      args = arguments;  
+                var later = function(){  
+                    timeout = null;  
+                    if(!immediate) func.apply(context, args);  
+                };  
+                var callNow = immediate && !timeout;  
+                if(!timeout){  
+                    clearTimeout(timeout);  
+                    timeout = setTimeout(later, wait);  
+                }  
+                if(callNow) func.apply(context, args);  
+            };  
         };
     };
 })(jQuery);

@@ -33,7 +33,7 @@
 				watchData_now = v;
 				if(watchData_last_last == watchData_now){
 					watchCount++;
-					if(watchCount > 3){
+					if(watchCount > 1){
 						clearInterval(timer);
 						clearInterval(wacthVTimer);
 					}

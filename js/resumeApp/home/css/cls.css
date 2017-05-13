@@ -376,6 +376,17 @@
 
 	/*style*/
 }
+.rotateBySwitch_cls{
+	/*position*/
+	position: relative;
+	width: 50%;
+	height: 300px;
+
+	/*style*/
+	display: block;
+	margin: 0px auto;
+	overflow: hidden;
+}
 .turningPics_cls{
 	/*position*/
 	position: relative;

@@ -402,7 +402,18 @@
 					}
 				]
 			};
-			self.experItemSlide("experItem", obj);
+
+			if(GetBrowser.getBrowser().type == "IE"){
+				var strHtml = '\
+					<div id="rotateBySwitch" class="rotateBySwitch_cls"></div>\
+				';
+				$("#experItem").append(strHtml);
+				var PicSwitchEffect = new $.PicSwitchEffect();
+				PicSwitchEffect.init("rotateBySwitch", obj.items);
+			}
+			else{
+				self.experItemSlide("experItem", obj);
+			}
 		};
 
 		this.experItemSlide = function(strExperItem, obj){
