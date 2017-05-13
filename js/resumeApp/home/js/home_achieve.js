@@ -31,7 +31,6 @@
 					<div id="aboutMe" class="aboutMe_cls homeChild_cls"></div>\
 					<div id="skill" class="skill_cls homeChild_cls"></div>\
 					<div id="exper" class="exper_cls homeChild_cls"></div>\
-					<div id="product" class="product_cls homeChild_cls"></div>\
 					<div id="callMe" class="callMe_cls homeChild_cls"></div>\
 				</div>\
 				<div id="homePageLst" class="homePageLst_cls">\
@@ -39,7 +38,6 @@
 					<div id="aboutMe_lst" class="homeLstChild_cls"><div></div></div>\
 					<div id="skill_lst" class="homeLstChild_cls"><div></div></div>\
 					<div id="exper_lst" class="homeLstChild_cls"><div></div></div>\
-					<div id="product_lst" class="homeLstChild_cls"><div></div></div>\
 					<div id="callMe_lst" class="homeLstChild_cls"><div></div></div>\
 				</div>\
 				<div id="homeHead" class="homeHead_cls"></div>\
@@ -349,10 +347,16 @@
 
 		this.drawSkillPage = function(strPageId){
 			var strHtml = '\
-				<div id="hhh">hhh</div>\
+				<div id="skillPage" class="skillPage_cls">skillPage</div>\
 			';
 			$("#" + strPageId).append(strHtml);
 			self.pageBounceEffect(strPageId)
+
+			self.skillPageScatter("skillPage");
+		};
+
+		this.skillPageScatter = function(){
+
 		};
 
 		this.drawExperPage = function(strPageId){
@@ -657,7 +661,7 @@
 
 		this.drawCallMePage = function(strPageId){
 			var strHtml = '\
-				<div id="ddd">ddd</div>\
+				<div id="callMePage" class="callMePage_cls">callMePage</div>\
 			';
 			$("#" + strPageId).append(strHtml);
 			self.pageBounceEffect(strPageId)

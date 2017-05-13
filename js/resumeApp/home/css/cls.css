@@ -155,6 +155,7 @@
 
 	/*style*/
 }
+/*------------briefIntro_cls------------*/
 .briefIntroPic_cls{
 	/*position*/
 	position: relative;
@@ -224,6 +225,7 @@
 	font-family: "苹方", "YouYuan";
 	font-size: 18px;
 }
+/*------------aboutMe_cls------------*/
 .aboutMeTheme_cls{
 	/*position*/
 	position: relative;
@@ -276,7 +278,6 @@
 	/*style*/
 	margin: 0px 50px 0px 50px;
 	text-align: center;
-
 }
 .contentChild_cls img{
 	/*position*/
@@ -325,6 +326,7 @@
 	font-family: "苹方", "YouYuan";
 	font-size: 12px;
 }
+/*------------experPage_cls------------*/
 .experPage_cls{
 	/*position*/
 	position: relative;
@@ -420,7 +422,6 @@
 	-webkit-transform-origin: left;	/* Safari 和 Chrome */
 	-moz-transform-origin: left;		/* Firefox */
 	-o-transform-origin: left;		/* Opera */
-
 }
 @keyframes infoRotate{
 	100%{
@@ -601,4 +602,24 @@
 	/*position*/
 
 	/*style*/
+}
+/*-----------------skillPage_cls--------------*/
+.skillPage_cls{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	/*style*/
+	background: red;
+}
+/*----------------callMePage_cls---------------*/
+.callMePage_cls{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	/*style*/
+	background: red;
 }
