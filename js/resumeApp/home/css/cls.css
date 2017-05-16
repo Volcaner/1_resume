@@ -1,4 +1,4 @@
-/*-------------home--------------*/
+/*-------------------home------------------*/
 .home_cls{
 	/*position*/
 	position: relative;
@@ -41,7 +41,7 @@
 	margin: 20px 20px;
 }
 
-/*----------------slidePages---------------*/
+/*--------------------------------------------------slidePages--------------------------------------------*/
 .homePages_cls{
 	/*position*/
 	position: relative;
@@ -49,7 +49,6 @@
 	height: 100%;
 
 	/*style*/
-	
 }
 .homeChild_cls{
 	/*position*/
@@ -92,7 +91,7 @@
 	/*style*/
 }
 
-/*---------------list-----------------*/
+/*------------------------------------------------------list-----------------------------------------------*/
 .homePageLst_cls{
 	/*position*/
 	position: absolute;
@@ -101,14 +100,13 @@
 	float: right;
 
 	/*style*/
-	margin-top: -500px;
-	margin-left: 90%;	
+	top: 100px;
+	right: 20px;	
 	padding: 10px 0 10px 0;
 	z-index: 999;
 	/*background: red;*/
 	/*border: solid 5px #aaa;*/
 	/*border-radius: 5px;*/
-	
 }
 .homeLstChild_cls{
 	/*position*/
@@ -146,7 +144,7 @@
 	/*style*/
 }
 
-/*------------page------------*/
+/*-----------------------------------------------------page------------------------------------------------*/
 .page_cls{
 	/*position*/
 	position: relative;
@@ -155,6 +153,31 @@
 
 	/*style*/
 }
+
+/*----------------------------------------------------title_cls--------------------------------------------*/
+.title_cls{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: auto;
+
+	/*style*/
+	padding-top: 8%;
+}
+.title_cls p{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: 100px;
+
+	/*style*/
+	display: block;
+	text-align: center;
+	font-family: "苹方", "YouYuan";
+	font-size: 22px;
+	padding-top: 20px;
+}
+
 /*------------briefIntro_cls------------*/
 .briefIntroPic_cls{
 	/*position*/
@@ -225,30 +248,8 @@
 	font-family: "苹方", "YouYuan";
 	font-size: 18px;
 }
+
 /*------------aboutMe_cls------------*/
-.aboutMeTheme_cls{
-	/*position*/
-	position: relative;
-	width: 100%;
-	height: auto;
-
-	/*style*/
-	padding-top: 8%;
-}
-.aboutMeTheme_cls p{
-	/*position*/
-	position: relative;
-	width: 100%;
-	height: 100px;
-
-	/*style*/
-	margin: 10px auto 10px auto;
-	display: block;
-	text-align: center;
-	font-family: "苹方", "YouYuan";
-	font-size: 22px;
-	line-height: 10px;
-}
 .aboutMeChart_cls{
 	/*position*/
 	position: relative;
@@ -326,6 +327,7 @@
 	font-family: "苹方", "YouYuan";
 	font-size: 12px;
 }
+
 /*------------experPage_cls------------*/
 .experPage_cls{
 	/*position*/
@@ -335,29 +337,6 @@
 
 	/*style*/
 	/*background: red;*/
-}
-.experTheme_cls{
-	/*position*/
-	position: relative;
-	width: 100%;
-	height: auto;
-
-	/*style*/
-	padding-top: 8%;
-}
-.experTheme_cls p{
-	/*position*/
-	position: relative;
-	width: 100%;
-	height: 100px;
-
-	/*style*/
-	margin: 10px auto 10px auto;
-	display: block;
-	text-align: center;
-	font-family: "苹方", "YouYuan";
-	font-size: 22px;
-	line-height: 10px;
 }
 .experItem_cls{
 	/*position*/
@@ -603,6 +582,7 @@
 
 	/*style*/
 }
+
 /*-----------------skillPage_cls--------------*/
 .skillPage_cls{
 	/*position*/
@@ -613,6 +593,7 @@
 	/*style*/
 	background: red;
 }
+
 /*----------------callMePage_cls---------------*/
 .callMePage_cls{
 	/*position*/
@@ -621,5 +602,160 @@
 	height: 100%;
 
 	/*style*/
-	background: red;
+	/*background: red;*/
+}
+.callMePoetry_cls{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: auto;
+
+	/*style*/
+	/*background: #aaa;*/
+}
+.poetryArea_cls{
+	/*position*/
+	position: relative;
+	width: 320px;
+	height: auto;
+
+	/*style*/
+	display: block;
+	margin: 0px auto;
+}
+.poetryArea_cls h3{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: auto;
+
+	/*style*/
+	display: block;
+	text-align: center;
+	margin: 0px auto;
+}
+.poetryArea_cls ul{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: auto;
+
+	/*style*/
+	padding: 10px 10px;
+	text-decoration-style: none;
+	list-style: none;
+}
+.poetryArea_cls ul li{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: auto;
+
+	/*style*/
+	display: block;
+	padding: 5px 5px;
+	text-decoration-style: none;
+	/*text-align: center;*/
+	list-style: none;
+	font-size: 12px;
+}
+.callMeFoot_cls{
+	/*position*/
+	position: absolute;
+	width: 100%;
+	height: 30px;
+
+	/*style*/
+	background: #333;
+	bottom: 0px;
+	display: inline-block;
+	cursor: pointer;
+	opacity: 0.75;
+	filter: alpha(opacity=750);
+}
+.callMeFoot_cls:hover{
+	/*position*/
+
+	/*style*/
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+}
+.callMeFoot_cls span{
+	/*position*/
+	position: relative;
+	width: 100%;
+	height: 30px;
+
+	/*style*/
+	line-height: 30px;
+	display: block;
+	margin: 0px auto;
+	text-align: center;
+}
+.tel_cls{
+	/*position*/
+	position: relative;
+	width: 200px;
+	height: 80%;
+	height: calc(100% - 30px);
+	height: -moz-calc(100% - 30px);
+	height: -webkit-calc(100% - 30px);
+
+	/*style*/
+	padding-top: 20px;
+	display: block;
+	margin: 0px auto;
+}
+.tel_cls li{
+	/*position*/
+	position: relative;
+	width: 200px;
+	height: 52px;
+
+	/*style*/
+	margin: 10px auto;
+	list-style: none;
+	display: block;
+
+}
+.logo_cls{
+	/*position*/
+	position: relative;
+	width: 52px;
+	height: 52px;
+
+	/*style*/
+	float: left;
+	border-radius: 52px 52px;
+	overflow: hidden;
+}
+.logo_cls img{
+	/*position*/
+	position: relative;
+	width: 30px;
+	height: 30px;
+
+	/*style*/
+	border-radius: 30px 30px;
+	margin: 11px 11px;
+}
+.tel_cls strong{
+	/*position*/
+	position: relative;
+
+	/*style*/
+	line-height: 52px;
+	padding-left: 10px;
+	font-size: 12px;
+}
+.QR_cls{
+	/*position*/
+	position: absolute;
+	width: 200px;
+	height: 200px;
+
+	/*style*/
+	left: 200px;
+	top: 20px;
+	visibility: hidden;
 }

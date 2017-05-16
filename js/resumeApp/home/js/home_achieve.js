@@ -310,7 +310,7 @@
 		this.drawAboutMePage = function(strPageId){
 			var strHtml = '\
 				<div id="aboutMePage" class="page_cls">\
-					<div id="aboutMeTheme" class="aboutMeTheme_cls">\
+					<div id="aboutMeTheme" class="title_cls">\
 						<p>-关于我-</p>\
 					</div>\
 					<div id="aboutMeChart" class="aboutMeChart_cls">\
@@ -347,7 +347,11 @@
 
 		this.drawSkillPage = function(strPageId){
 			var strHtml = '\
-				<div id="skillPage" class="skillPage_cls">skillPage</div>\
+				<div id="skillPage" class="skillPage_cls">\
+					<div id="skillTitle" class="title_cls">\
+						<p>-技能栈-</p>\
+					</div>\
+				</div>\
 			';
 			$("#" + strPageId).append(strHtml);
 			self.pageBounceEffect(strPageId)
@@ -362,7 +366,7 @@
 		this.drawExperPage = function(strPageId){
 			var strHtml = '\
 				<div ID="experPage" class="experPage_cls">\
-					<div id="experTheme" class="experTheme_cls">\
+					<div id="experTheme" class="title_cls">\
 						<p>-项目经验-</p>\
 					</div>\
 					<div id="experItem" class="experItem_cls"></div>\
@@ -661,10 +665,176 @@
 
 		this.drawCallMePage = function(strPageId){
 			var strHtml = '\
-				<div id="callMePage" class="callMePage_cls">callMePage</div>\
+				<div id="callMePage" class="callMePage_cls">\
+					<div id="callMeTitle" class="title_cls">\
+						<p>-联系我-</p>\
+					</div>\
+					<div id="callMePoetry" class="callMePoetry_cls"></div>\
+					<div id="callMeFoot" class="callMeFoot_cls">\
+						<span>call me</span>\
+					</div>\
+				</div>\
 			';
 			$("#" + strPageId).append(strHtml);
 			self.pageBounceEffect(strPageId)
+
+			// 已"。"结尾
+			var obj = {
+				title: "将进酒",
+				content: "\
+					君不见，黄河之水天上来，奔流到海不复回。\
+					君不见，高堂明镜悲白发，朝如青丝暮成雪。\
+					人生得意须尽欢，莫使金樽空对月。\
+					天生我材必有用，千金散尽还复来。\
+					烹羊宰牛且为乐，会须一饮三百杯。\
+					岑夫子，丹丘生，将进酒，杯莫停。\
+					与君歌一曲，请君为我倾耳听。\
+					钟鼓馔玉不足贵，但愿长醉不复醒。\
+					古来圣贤皆寂寞，惟有饮者留其名。\
+					陈王昔时宴平乐，斗酒十千恣欢谑。\
+					主人何为言少钱，径须沽取对君酌。\
+					五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。"
+			}
+			self.addPoetry("callMePoetry", obj);
+
+			// foot
+			self.addCallFoot("callMeFoot", "callMeTitle", "callMePoetry");
+		};
+
+		this.addPoetry = function(strPageId, obj){
+			var strHtml = '\
+				<div id="poetryArea" class="poetryArea_cls">\
+					<h3>' + obj.title + '</h3>\
+					<ul></ul>\
+				</div>\
+			';
+
+			$("#poetryArea>span").html(obj.title);
+			$("#" + strPageId).append(strHtml);
+
+			var arrContent = obj.content.split("。");
+			var index = 0;
+			if(arrContent.length > 0){
+				arrContent.splice(arrContent.length-1, 1);
+				// arrContent
+				var _poetryFun = function(){
+					var item = arrContent[index] + "。";
+					console.log(item);
+					$("#poetryArea>ul:eq(0)").append('<li></li>');
+					var curLength = 0;
+					var poetryTimer = setInterval(function(){
+						if(curLength>item.length){
+							clearInterval(poetryTimer);
+							index++;
+							if(index < arrContent.length){
+								_poetryFun();
+							}
+						}
+						else{
+							curLength++;
+							$("#poetryArea>ul:eq(0)>li:eq(" + index + ")").append(item.substring(curLength-1,curLength));
+						}
+					}, 100);
+				};
+				_poetryFun();
+			}
+		};
+
+		this.addCallFoot = function(strFoot, strTitle, strPoetry){
+			var bIsUpClick = true;
+			$("#" + strFoot).click(function(){
+				if(bIsUpClick){
+					$("#" + strTitle).animate({top:"-12%"}, 1500);
+					$("#" + strPoetry).animate({top:"-12%"}, 1500);
+					$("#" + strFoot).animate({height:"50%"}, 500);
+
+					// add qq weixin tel email
+					$("#" + strFoot).append('<div id="tel" class="tel_cls"></div>');
+					self.addTel("tel");
+
+					bIsUpClick = false;
+				}
+				else{
+					$("#" + strTitle).animate({top:"0px"}, 500);
+					$("#" + strPoetry).animate({top:"0px"}, 500);
+					$("#" + strFoot).animate({height:"20px"}, 500);
+
+					// del qq weixin tel email
+					$("#" + strFoot + ">div#tel").remove();
+
+					bIsUpClick = true;
+				}
+			});
+		};
+
+		this.addTel = function(strTel){
+			var strHtml = '\
+				<ul>\
+					<li>\
+						<div id="qq" class="logo_cls"><img data-src="./js/resumeApp/home/img/qqpic.jpg" src="./js/resumeApp/home/img/qqLogo.jpg" /></div>\
+						<strong>496310028</strong>\
+					</li>\
+					<li>\
+						<div id="wechat" class="logo_cls"><img data-src="./js/resumeApp/home/img/wechatpic.jpg" src="./js/resumeApp/home/img/wechatLogo.jpg" /></div>\
+						<strong>DAAIYG7777777</strong>\
+					</li>\
+					<li>\
+						<div id="tel" class="logo_cls"><img data-src="./js/resumeApp/home/img/telpic.jpg" src="./js/resumeApp/home/img/telLogo.jpg" /></div>\
+						<strong>15372016272</strong>\
+					</li>\
+				</ul>\
+				<div id="QR_area" class="QR_cls"></div>\
+			';
+			$("#" + strTel).append(strHtml);
+
+			$("#" + strTel).find("li").each(function(index, item){
+				var target = $("#QR_area");
+				var bIsUp = false;
+				$("#" + strTel).find("li").eq(index).mousemove(function(){
+					if(!bIsUp){
+						// bIsUp
+						bIsUp = true;
+
+						// loading pic
+						target.append('<img src="./js/resumeApp/home/img/loading.gif" />');
+						target.css({visibility: "visible"});
+
+						// change pic
+						var tergetImg = target.find("img").eq(0);
+						var img = new Image();
+						img.onload = function(){
+							tergetImg.attr("src", img.src);
+						};
+						var targetId = $("#" + strTel).find("li").eq(index).find(".logo_cls").attr("id");
+
+						// var strUrl = "./js/resumeApp/home/img/" + targetId + "pic.jpg";
+						// strUrl = strUrl.match(/http:\/\/.+/);
+						var strUrl = $("#" + strTel).find("li").eq(index).find(".logo_cls>img").data("src");
+						if(strUrl == null){
+							return;
+						}
+						else{
+							img.src = strUrl;
+						}
+					}
+					else{
+						return;
+					}
+				});
+				$("#" + strTel).find("li").eq(index).mouseout(function(){
+					if(bIsUp){
+						// bIsUp
+						bIsUp = false;
+
+						// empty target
+						target.empty();
+						target.css({visibility: "hidden"});
+					}
+					else{
+						return;
+					}
+				});
+			});
 		};
 
 		this.pageBounceEffect = function(strPageId){
