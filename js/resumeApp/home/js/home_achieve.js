@@ -705,7 +705,7 @@
 		this.addPoetry = function(strPageId, obj){
 			// clear timer
 			clearInterval(poetryTimer);
-			
+
 			var strHtml = '\
 				<div id="poetryArea" class="poetryArea_cls">\
 					<h3>' + obj.title + '</h3>\
@@ -761,7 +761,7 @@
 				else{
 					$("#" + strTitle).animate({top:"0px"}, 500);
 					$("#" + strPoetry).animate({top:"0px"}, 500);
-					$("#" + strFoot).animate({height:"20px"}, 500);
+					$("#" + strFoot).animate({height:"30px"}, 500);
 
 					// del qq weixin tel email
 					$("#" + strFoot + ">div#tel").remove();
