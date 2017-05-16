@@ -8,6 +8,7 @@
 
 		// timer
 		var infoTimer;
+		var poetryTimer;
 		
 		this.initLayout = function(obj){
 			// cache
@@ -702,6 +703,9 @@
 		};
 
 		this.addPoetry = function(strPageId, obj){
+			// clear timer
+			clearInterval(poetryTimer);
+			
 			var strHtml = '\
 				<div id="poetryArea" class="poetryArea_cls">\
 					<h3>' + obj.title + '</h3>\
@@ -722,7 +726,7 @@
 					console.log(item);
 					$("#poetryArea>ul:eq(0)").append('<li></li>');
 					var curLength = 0;
-					var poetryTimer = setInterval(function(){
+					poetryTimer = setInterval(function(){
 						if(curLength>item.length){
 							clearInterval(poetryTimer);
 							index++;
