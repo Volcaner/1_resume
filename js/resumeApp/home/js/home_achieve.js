@@ -830,7 +830,7 @@
 					</div>\
 					<div id="callMePoetry" class="callMePoetry_cls"></div>\
 					<div id="callMeFoot" class="callMeFoot_cls">\
-						<span>call me</span>\
+						<span>contact me</span>\
 					</div>\
 				</div>\
 			';
