@@ -978,6 +978,10 @@
 						<div id="tel" class="logo_cls"><img data-src="" src="./js/resumeApp/home/img/telLogo.jpg" /></div>\
 						<strong>15372016272</strong>\
 					</li>\
+					<li>\
+						<div id="email" class="logo_cls"><img data-src="" src="./js/resumeApp/home/img/emailLogo.jpg" /></div>\
+						<strong>kaican93@163.com</strong>\
+					</li>\
 				</ul>\
 				<div id="QR_area" class="QR_cls"></div>\
 			';
