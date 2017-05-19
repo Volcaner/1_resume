@@ -357,11 +357,167 @@
 			$("#" + strPageId).append(strHtml);
 			self.pageBounceEffect(strPageId)
 
-			self.skillPageScatter("skillPage");
+			var obj = [
+				{
+					id: "html"
+				},
+				{
+					id: "css"
+				},
+				{
+					id: "js"
+				},
+				{
+					id: "jQuery"
+				},
+				{
+					id: "webpack"
+				},
+				{
+					id: "npm"
+				},
+				{
+					id: "json"
+				},
+				{
+					id: "Ajax"
+				},
+				{
+					id: "Vuejs"
+				},
+				{
+					id: "Reactjs"
+				},
+				{
+					id: "HTTP"
+				},
+				{
+					id: "Nodejs"
+				},
+				{
+					id: "PHP"
+				},
+				{
+					id: "JSP"
+				},
+				{
+					id: "Bootstrap"
+				},
+				{
+					id: "Grunt"
+				}
+			];
+			self.skillPageScatter("skillPage", obj);
 		};
 
-		this.skillPageScatter = function(){
+		this.skillPageScatter = function(strSkillPage, obj){
+			var strHtml = '<div id="scatterBox" class="scatterBox_cls"></div>';
+			$("#" + strSkillPage).append(strHtml);
 
+			// bilud pic area: can scatter pictures
+			var windowW = window.WindowInf.getWindowWidthAndHeight().width;
+			var windowH = window.WindowInf.getWindowWidthAndHeight().height;
+
+			var leftAreaLMin = 0;
+			var leftAreaLMax = windowW/2 - 100 - 100;
+
+			var rightAreaLMin = windowW/2 + 100;
+			var rightAreaLMax = windowW - 100;
+
+			var topMin = 0;
+			var topMax = windowH - 100;
+
+			// colors
+			var colors = ["#20B2AA", "#8B8878", "#A020F0", "#CD3700", "#218868", "#9A32CD", "#CD0000", "#D02090", "#FF7F00"];
+			var colors1 = ["#00B38C", "#00B0F0", "#82ABBA", "#A2B4BA", "#373E40"];
+
+			// cache for click item
+			var clickItem = undefined;
+
+			// splice now clickitem
+			var scatterObj = [];
+
+			obj.forEach(function(item, index){
+				$("#scatterBox").append('<div id=' + item.id + ' class="scatterPicBox_cls">\
+						<p>' + item.id + '</p>\
+					</div>');
+				// $("#" + item.id).css({"border-color": colors1[Math.floor(colors1.length*Math.random())]});
+				$("#" + item.id + ">p").css({"background": colors1[Math.floor(colors1.length*Math.random())]});
+
+
+
+				// clack event
+				$("#" + item.id + ">p").click(function(){
+					console.log(index + " : " + item.id);
+					
+					// cache for scatterObj
+					scatterObj = [];
+					obj.forEach(function(item, index){
+						scatterObj.push(item);
+					});
+
+					// splice now clickitem
+					scatterObj.splice(index, 1);
+
+					// rescatter
+					drawScatterPic(scatterObj);
+					$("#" + item.id).animate({
+						"border-radius": "5px", 
+						"border-width": "5px", 
+						"left": windowW/2 - 50 + "px",
+						"top":  windowH/2 + "px",
+						"width": "100px",
+						"height": "100px"
+
+					});
+					$("#" + item.id + ">p").animate({
+						"width": "80px",
+						"height": "80px"
+					});
+				});
+			});
+
+			// draw scatter
+			var drawScatterPic = function(scatterObj){
+				scatterObj.forEach(function(item, index){
+					var itemTop = Math.floor(Math.random()*(topMax - topMin));
+					var itemLALeft = Math.floor(Math.random()*(leftAreaLMax - leftAreaLMin));
+					var itemRALeft = Math.floor(Math.random()*(rightAreaLMax - rightAreaLMin)) + rightAreaLMin;
+					var itemW = Math.floor(Math.random()*30 + 80);
+					var itemH = itemW;
+					if(Math.random() < 0.5){
+						$("#" + item.id).animate({
+							"left": itemLALeft + "px", 
+							"top": itemTop + "px", 
+							"border-radius": "100px", 
+							"border-width": "1px",
+							"width": itemW + "px",
+							"height": itemH + "px"
+						});
+						$("#" + item.id + ">p").animate({
+							"width": itemW - 20 + "px",
+							"height": itemH - 20 + "px",
+							"line-height": itemH - 20 + "px"
+						});
+					}
+					else{
+						$("#" + item.id).animate({
+							"left": itemRALeft + "px", 
+							"top": itemTop + "px", 
+							"border-radius": "100px", 
+							"border-width": "1px",
+							"width": itemW + "px",
+							"height": itemH + "px"
+						});
+						$("#" + item.id + ">p").animate({
+							"width": itemW - 20 + "px",
+							"height": itemH - 20 + "px",
+							"line-height": itemH - 20 + "px"
+						});
+					}
+				});
+			}
+			drawScatterPic(obj);
 		};
 
 		this.drawExperPage = function(strPageId){
@@ -656,6 +812,7 @@
 			});
 		};
 
+		// TODO:delete this method
 		this.drawProductPage = function(strPageId){
 			var strHtml = '\
 				<div id="fff">fff</div>\

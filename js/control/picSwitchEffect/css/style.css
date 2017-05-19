@@ -195,7 +195,7 @@
 	/*style*/
 	/*background: blue;*/
 }
-.switchItemInfo_cls h3,p{
+.switchItemInfo_cls>h3{
 	/*position*/
 	position: relative;
 	width: 80%;
@@ -211,10 +211,21 @@
 	color: #fff;
 	padding-top: 10px;
 }
-.switchItemInfo_cls p{
+.switchItemInfo_cls>p{
 	/*position*/
+	position: relative;
+	width: 80%;
+	height: auto;
 
 	/*style*/
+	text-align: center;
+	display: block;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	margin: 0px auto;
+	word-wrap:break-word;
+	color: #fff;
+	padding-top: 10px;
 	text-indent: 2em;
 	text-align: left;
 }

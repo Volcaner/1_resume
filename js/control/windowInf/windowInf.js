@@ -35,3 +35,7 @@
 	};
 })(jQuery);
 window.WindowInf = new $.WindowInf();
+
+$(window).resize(function(){
+	window.WindowInf = new $.WindowInf();
+});
