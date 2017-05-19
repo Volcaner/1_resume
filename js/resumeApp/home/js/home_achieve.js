@@ -9,6 +9,21 @@
 		// timer
 		var infoTimer;
 		var poetryTimer;
+
+		// object 封装 可更新的数据
+		var targetTop = {
+			top: 0
+		};
+
+		// object 封装 可更新的数据
+		var bIsWheel = {
+			bool: true
+		};
+
+		// object 封装 可更新的数据
+		var pageNum = {
+			num: 0
+		};
 		
 		this.initLayout = function(obj){
 			// cache
@@ -62,21 +77,6 @@
 								
 			};
 
-			// object 封装 可更新的数据
-			var targetTop = {
-				top: 0
-			};
-
-			// object 封装 可更新的数据
-			var bIsWheel = {
-				bool: true
-			};
-
-			// object 封装 可更新的数据
-			var pageNum = {
-				num: 0
-			};
-
 			$(document).bind({
 				mousewheel: function(ev){  // other browser
 					// console.log("other browser");
@@ -84,12 +84,12 @@
 					var wheelDelta = ev.originalEvent.wheelDelta;
 					if(wheelDelta && wheelDelta>0){
 						upOrDown = "UP";
-						self.mouseWheelUp("homePages", "homePageLst", upOrDown, bIsWheel, pageNum, targetTop);
+						self.mouseWheelUp("homePages", "homePageLst", upOrDown);
 
 					}
 					else if(wheelDelta && wheelDelta<0){
 						upOrDown = "DOWN";
-						self.mouseWheelDown("homePages", "homePageLst", upOrDown, bIsWheel, pageNum, targetTop);
+						self.mouseWheelDown("homePages", "homePageLst", upOrDown);
 
 					}
 				},
@@ -100,12 +100,12 @@
 					var wheelDelta = ev.originalEvent.wheelDelta;
 					if(wheelDelta && wheelDelta>0){
 						upOrDown = "UP";
-						self.mouseWheelUp("homePages", "homePageLst", upOrDown, bIsWheel, pageNum, targetTop);
+						self.mouseWheelUp("homePages", "homePageLst", upOrDown);
 
 					}
 					else if(wheelDelta && wheelDelta<0){
 						upOrDown = "DOWN";
-						self.mouseWheelDown("homePages", "homePageLst", upOrDown, bIsWheel, pageNum, targetTop);
+						self.mouseWheelDown("homePages", "homePageLst", upOrDown);
 
 					}
 				}
@@ -115,15 +115,48 @@
 		this.drawHead = function(strHomeHead){
 			var strHtml = '\
 				<div id="headIntro" class="headIntro_cls"></div>\
-				<div id="headList" class="headList_cls"></div>\
+				<div id="headList" class="headList_cls">\</div>\
+				<div id="popOrderBox" class="popOrderBox_cls">\
+					<img src="./js/resumeApp/home/img/arrowup.png">\
+					<img src="./js/resumeApp/home/img/arrowdown.png">\
+				</div>\
 			';
 			$("#" + strHomeHead).append(strHtml);
 
 			$("#headIntro").css({"background":"url(./js/resumeApp/home/img/briefIntro.png)", "background-size":"20px 20px"});
-			$("#headList").css({"background":"url(./js/resumeApp/home/img/order.png)", "background-size":"20px 20px"});
+			$("#headList").css({"background":"url(./js/resumeApp/home/img/order0.png)", "background-size":"20px 20px"});
+
+			// headIntro:link to github
+			$("#headIntro").click(function(){
+				window.open('https://github.com/Volcaner');
+			});
+
+			// order
+			var bIsShowOrder = true;
+			$("#headList").click(function(){
+				if(bIsShowOrder){
+					bIsShowOrder = false;
+					$(".popOrderBox_cls").css({"visibility": "visible"});
+					$("#headList").css({"background":"url(./js/resumeApp/home/img/order1.png)", "background-size":"20px 20px"});
+				}
+				else{
+					bIsShowOrder = true;
+					$(".popOrderBox_cls").css({"visibility": "hidden"});
+					$("#headList").css({"background":"url(./js/resumeApp/home/img/order0.png)", "background-size":"20px 20px"});
+				}
+			});
+
+			// find img order
+			$("#popOrderBox").find("img").eq(0).click(function(){
+				self.mouseWheelUp("homePages", "homePageLst", "UP");
+			});
+
+			$("#popOrderBox").find("img").eq(1).click(function(){
+				self.mouseWheelDown("homePages", "homePageLst", "DOWN");
+			});
 		};
 
-		this.mouseWheelUp = function(strHomePages, strHomePageLst, upOrDown, bIsWheel, pageNum, targetTop){
+		this.mouseWheelUp = function(strHomePages, strHomePageLst, upOrDown){
 			if(bIsWheel.bool){
 				if(pageNum.num>0){
 					pageNum.num--;
@@ -188,7 +221,7 @@
 			}
 		};
 
-		this.mouseWheelDown = function(strHomePages, strHomePageLst, upOrDown, bIsWheel, pageNum, targetTop){
+		this.mouseWheelDown = function(strHomePages, strHomePageLst, upOrDown){
 			if(bIsWheel.bool){
 				var lstCount = $("#" + strHomePageLst + ">div").length;
 				if(pageNum.num<lstCount-1){

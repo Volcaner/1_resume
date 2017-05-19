@@ -28,6 +28,7 @@
 
 	/*style*/
 	margin: 20px 20px;
+	cursor: pointer;
 }
 .headList_cls{
 	/*position*/
@@ -38,7 +39,30 @@
 	top: 0px;
 
 	/*style*/
-	margin: 20px 20px;
+	margin: 20px 10px 20px 10px;
+	cursor: pointer;
+}
+.popOrderBox_cls{
+	/*position*/
+	position: relative;
+	width: 40px;
+	height: auto;
+	float: right;
+
+	/*style*/
+	/*background: #333;*/
+	font-weight: 700;
+	visibility: hidden;
+	margin-top: 20px;
+}
+.popOrderBox_cls>img{
+	/*position*/
+	width: 20px;
+	height: 15px;
+
+	/*style*/
+	margin: 0px 10px 10px 10px;
+	cursor: pointer;
 }
 
 /*--------------------------------------------------slidePages--------------------------------------------*/
