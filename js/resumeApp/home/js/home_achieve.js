@@ -298,6 +298,7 @@
 						<p>开灿 兰州大学本科</p>\
 						<p>web前端 2年工作经验</p>\
 						<p>TEL：15372016272</p>\
+						<p>QQ：496310028</p>\
 					</div>\
 				</div>\
 			';
@@ -896,7 +897,7 @@
 							curLength++;
 							$("#poetryArea>ul:eq(0)>li:eq(" + index + ")").append(item.substring(curLength-1,curLength));
 						}
-					}, 100);
+					}, 20);
 				};
 				_poetryFun();
 			}
