@@ -163,7 +163,7 @@
 
 					self.controlWheel(bIsWheel);
 
-					console.log(upOrDown);
+					// console.log(upOrDown);
 					if(upOrDown=="UP"){
 						// lst
 						$("#" + strHomePageLst + ">div:eq(" + (pageNum.num+1) + ")>div").removeAttr("style");
@@ -192,7 +192,7 @@
 						// pages
 						var speed = 10;
 						var WindowH = WindowInf.getWindowWidthAndHeight().height;
-						console.log(WindowInf.getWindowWidthAndHeight().width);
+						// console.log(WindowInf.getWindowWidthAndHeight().width);
 						// var WindowH = 40;
 						var upPageTop = $("#" + strHomePages).position().top;
 
@@ -229,7 +229,7 @@
 
 					self.controlWheel(bIsWheel);
 
-					console.log(upOrDown);
+					// console.log(upOrDown);
 					if(upOrDown=="DOWN"){
 						// Lst
 						$("#" + strHomePageLst + ">div:eq(" + (pageNum.num-1) + ")>div").removeAttr("style");
@@ -482,7 +482,7 @@
 
 				// clack event
 				$("#" + item.id + ">p").click(function(){
-					console.log(index + " : " + item.id);
+					// console.log(index + " : " + item.id);
 					
 					// cache for scatterObj
 					scatterObj = [];
@@ -702,7 +702,7 @@
 						else{
 							var absClickCount = Math.abs(clickCount);
 						}
-						console.log(absClickCount + " " + obj.items[absClickCount].id);
+						// console.log(absClickCount + " " + obj.items[absClickCount].id);
 
 						$("#itemInfo").empty();
 						$("#itemInfo").append(obj.items[absClickCount].link);
@@ -734,7 +734,7 @@
 						else{
 							var absClickCount = Math.abs(clickCount);
 						}
-						console.log(absClickCount + " " + obj.items[absClickCount].id);
+						// console.log(absClickCount + " " + obj.items[absClickCount].id);
 
 						$("#itemInfo").empty();
 						$("#itemInfo").append(obj.items[absClickCount].link);
@@ -750,7 +750,7 @@
 				e = e || window.event;
 	            mouseDown.x = e.pageX || e.clientX + e.scrollLeft - e.clientLeft;
 	            mouseDown.y = e.pageY || e.clientY + e.scrollTop - e.clientTop;
-	            console.log(mouseDown.x, mouseDown.y);
+	            // console.log(mouseDown.x, mouseDown.y);
 			}, 300, true));
 			$("#itemBox").mouseup(self.debounce(function(e){
 				var mouseDownX = mouseDown.x;
@@ -758,8 +758,8 @@
 				e = e || window.event;
 	            mouseUp.x = e.pageX || e.clientX + e.scrollLeft - e.clientLeft;
 	            mouseUp.y = e.pageY || e.clientY + e.scrollTop - e.clientTop;
-	            console.log(mouseUp.x, mouseUp.y);
-	            console.log(mouseDownX, mouseDownY);
+	            // console.log(mouseUp.x, mouseUp.y);
+	            // console.log(mouseDownX, mouseDownY);
 	            if(mouseUp.x-mouseDownX>0){
 					clickCount++;
 					var itemSetInt = setInterval(function(){
@@ -781,7 +781,7 @@
 							else{
 								var absClickCount = Math.abs(clickCount);
 							}
-							console.log(absClickCount + " " + obj.items[absClickCount].id);
+							// console.log(absClickCount + " " + obj.items[absClickCount].id);
 
 							$("#itemInfo").empty();
 							$("#itemInfo").append(obj.items[absClickCount].link);
@@ -811,7 +811,7 @@
 							else{
 								var absClickCount = Math.abs(clickCount);
 							}
-							console.log(absClickCount + " " + obj.items[absClickCount].id);
+							// console.log(absClickCount + " " + obj.items[absClickCount].id);
 
 							$("#itemInfo").empty();
 							$("#itemInfo").append(obj.items[absClickCount].link);
@@ -915,7 +915,7 @@
 				// arrContent
 				var _poetryFun = function(){
 					var item = arrContent[index] + "。";
-					console.log(item);
+					// console.log(item);
 					$("#poetryArea>ul:eq(0)").append('<li></li>');
 					var curLength = 0;
 					poetryTimer = setInterval(function(){
@@ -975,7 +975,7 @@
 						<strong>DAAIYG7777777</strong>\
 					</li>\
 					<li>\
-						<div id="tel" class="logo_cls"><img data-src="./js/resumeApp/home/img/telpic.jpg" src="./js/resumeApp/home/img/telLogo.jpg" /></div>\
+						<div id="tel" class="logo_cls"><img data-src="" src="./js/resumeApp/home/img/telLogo.jpg" /></div>\
 						<strong>15372016272</strong>\
 					</li>\
 				</ul>\

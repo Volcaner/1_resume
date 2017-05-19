@@ -18,7 +18,7 @@
 					top = windowH - strTargetH;
 				}
 				$("#" + strId).css("top", top + "px");
-				console.log(v);
+				// console.log(v);
 			}, t);
 
 			// 监听数值抖动, 以比被监听的计时器时间多一秒较准确（验证得出的结论）；被监听数值最好是等差缩小
