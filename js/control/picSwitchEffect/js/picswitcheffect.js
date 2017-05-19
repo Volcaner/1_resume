@@ -112,7 +112,7 @@
                     bIsClick = false;
                     setTimeout(function(){
                         bIsClick = true;
-                    }, 500);
+                    }, 800);
 
                     var count = 1;
                     self.turnRight(obj, targetW, count);
@@ -125,7 +125,7 @@
                     bIsClick = false;
                     setTimeout(function(){
                         bIsClick = true;
-                    }, 500);
+                    }, 800);
 
                     var count = 1;
                     self.turnLeft(obj, targetW, count);
