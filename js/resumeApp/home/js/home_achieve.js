@@ -9,6 +9,7 @@
 		// timer
 		var infoTimer;
 		var poetryTimer;
+		var resizeTimer;
 
 		// object 封装 可更新的数据
 		var targetTop = {
@@ -311,6 +312,13 @@
 					break;
 				case "callMe":
 					self.drawCallMePage(strPageId);
+					// $(window).resize(function(){	
+					// 	clearTimeout(resizeTimer, poetryTimer);
+					// 	resizeTimer = setTimeout(function(){
+					// 		var strPageId = $("#" + strHomePages + ">div:eq(" + pageNum.num + ")").get(0).id;
+					// 		self.drawPage(strPageId);
+					// 	}, 1000);
+					// });
 					break;
 				default: 
 					break;
@@ -331,7 +339,7 @@
 						<p>开灿 兰州大学本科</p>\
 						<p>web前端 2年工作经验</p>\
 						<p>TEL：15372016272</p>\
-						<p>QQ：496310028</p>\
+						<p>Email：kaican93@163.com</p>\
 					</div>\
 				</div>\
 			';
@@ -442,6 +450,13 @@
 				}
 			];
 			self.skillPageScatter("skillPage", obj);
+			$(window).resize(function(){	
+				clearTimeout(resizeTimer);
+				resizeTimer = setTimeout(function(){
+					$("#scatterBox").remove();
+					self.skillPageScatter("skillPage", obj);
+				}, 200);
+			});
 		};
 
 		this.skillPageScatter = function(strSkillPage, obj){
