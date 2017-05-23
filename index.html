@@ -58,6 +58,22 @@
 			parentId: "app"
 		};
 		Home.init(obj);
+
+		var bIsResize = true;
+		var timer;
+		if(bIsResize){
+			$(window).resize(function(){
+				bIsResize = false;
+				Home.dispose();
+				clearTimeout(timer);
+				timer = setTimeout(function(){
+					$(".app").empty();
+					Home.init(obj);
+
+					bIsResize = true;
+				}, 500);
+			});
+		}
 	});
 </script>
 

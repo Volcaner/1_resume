@@ -25,6 +25,31 @@
 		var pageNum = {
 			num: 0
 		};
+
+		this.dispose = function(){
+			// obj cache
+			objCache = {};
+
+			// timer
+			infoTimer;
+			poetryTimer;
+			resizeTimer;
+
+			// object 封装 可更新的数据
+			targetTop = {
+				top: 0
+			};
+
+			// object 封装 可更新的数据
+			bIsWheel = {
+				bool: true
+			};
+
+			// object 封装 可更新的数据
+			pageNum = {
+				num: 0
+			};
+		};
 		
 		this.initLayout = function(obj){
 			// cache

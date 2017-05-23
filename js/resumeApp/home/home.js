@@ -7,5 +7,9 @@
 			// entry
 			HomeProcess.init(obj);
 		};
+
+		this.dispose = function(){
+			HomeProcess.dispose();
+		};
 	};
 })(jQuery);

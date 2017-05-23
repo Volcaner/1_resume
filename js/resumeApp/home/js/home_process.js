@@ -13,5 +13,9 @@
 			// initlayout
 			achieve.initLayout(obj);
 		};
+
+		this.dispose = function(){
+			achieve.dispose();
+		};
 	};
 })(jQuery);
